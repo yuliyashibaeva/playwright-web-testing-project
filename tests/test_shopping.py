@@ -1,6 +1,8 @@
 from test_data.user_credentials import STANDARD_USER_USERNAME, PASSWORD
+import pytest
 
 
+@pytest.mark.happy_pass
 class TestMakeAnOrder:
     def test_make_an_order_happy_pass(self, login_page, product_list_page, cart_page, checkout_page, customer):
         login_page.open_login_page()
@@ -14,6 +16,7 @@ class TestMakeAnOrder:
         checkout_page.checkout_complete_text_should_be_present()
 
 
+@pytest.mark.add_tests
 class TestAddProductToCart:
     def test_product_should_be_added_to_cart(self, login_page, product_list_page):
         # TODO: too many times open and login
@@ -23,6 +26,7 @@ class TestAddProductToCart:
         product_list_page.shopping_cart_badge_shoud_be_equal_to(1)
 
 
+@pytest.mark.delete_tests
 class TestDeleteProductFromCart:
     def test_backpack_should_be_deleted_from_product_list_page(self, login_page, product_list_page):
         login_page.open_login_page()
