@@ -9,7 +9,7 @@ class BasePage:
     def open(self, link):  # TODO: delete if not used
         self.page.goto(link)
 
-    def shopping_cart_badge_shoud_be_equal_to(self, qty: int):
+    def shopping_cart_badge_should_be_equal_to(self, qty: int):
         expect(self.page.get_by_test_id("shopping-cart-badge")).to_have_text(str(qty))
 
     def shopping_cart_badge_should_not_be_present(self):

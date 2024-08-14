@@ -23,7 +23,7 @@ class TestAddProductToCart:
         login_page.open_login_page()
         login_page.login(STANDARD_USER_USERNAME, PASSWORD)
         product_list_page.add_backpack_to_cart()
-        product_list_page.shopping_cart_badge_shoud_be_equal_to(1)
+        product_list_page.shopping_cart_badge_should_be_equal_to(1)
 
 
 @pytest.mark.delete_tests
