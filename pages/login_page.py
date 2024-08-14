@@ -4,9 +4,6 @@ from playwright.sync_api import expect
 
 
 class LoginPage(BasePage):
-    def error_message_should_be_present(self):
-        expect(self.page.get_by_test_id("error")).to_be_visible()
-
     def error_message_should_have_text(self):
         expect(self.page.get_by_test_id("error")).to_have_text("Epic sadface: Sorry, this user has been locked out.")
 

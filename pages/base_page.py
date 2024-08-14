@@ -6,6 +6,9 @@ class BasePage:
         self.page = page
         playwright.selectors.set_test_id_attribute("data-test")  # needed to use custom test-id locator
 
+    def error_message_should_be_present(self):
+        expect(self.page.get_by_test_id("error")).to_be_visible()
+
     def open(self, link):  # TODO: delete if not used
         self.page.goto(link)
 
