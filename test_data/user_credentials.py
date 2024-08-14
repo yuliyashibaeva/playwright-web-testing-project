@@ -2,3 +2,4 @@
 
 STANDARD_USER_USERNAME = "standard_user"
 PASSWORD = "secret_sauce"
+LOCKED_OUT_USER_USERNAME = "locked_out_user"
