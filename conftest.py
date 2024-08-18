@@ -28,7 +28,7 @@ def checkout_page(page: Page, playwright: Playwright) -> CheckoutPage:
 
 
 @pytest.fixture(scope="function")
-def customer() -> Customer:
+def customer_data() -> Customer:
     customer = Customer()
     customer.generate_customer_data()
     return customer
