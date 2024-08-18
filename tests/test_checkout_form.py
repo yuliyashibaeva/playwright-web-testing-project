@@ -7,8 +7,7 @@ import pytest
 class TestCheckoutForm:
     def test_checkout_should_fail_without_required_field(self, login_page, product_list_page, cart_page, checkout_page,
                                                          customer_data, missing_input):
-        login_page.open_login_page()
-        login_page.login(STANDARD_USER_USERNAME, PASSWORD)
+        login_page.open_page_and_login(STANDARD_USER_USERNAME, PASSWORD)
         product_list_page.add_bolt_t_shirt_to_cart()
         product_list_page.go_to_cart()
         cart_page.go_to_checkout()

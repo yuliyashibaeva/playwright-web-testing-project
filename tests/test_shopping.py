@@ -8,8 +8,7 @@ import pytest
 class TestMakeAnOrder:
     def test_make_an_order_happy_pass(self, login_page, product_list_page, cart_page, checkout_page, customer_data,
                                       user_name):
-        login_page.open_login_page()
-        login_page.login(user_name, PASSWORD)
+        login_page.open_page_and_login(user_name, PASSWORD)
         product_list_page.add_bolt_t_shirt_to_cart()
         product_list_page.go_to_cart()
         cart_page.go_to_checkout()
@@ -22,9 +21,7 @@ class TestMakeAnOrder:
 @pytest.mark.add_tests
 class TestAddProductToCart:
     def test_product_should_be_added_to_cart(self, login_page, product_list_page):
-        # TODO: too many times open and login
-        login_page.open_login_page()
-        login_page.login(STANDARD_USER_USERNAME, PASSWORD)
+        login_page.open_page_and_login(STANDARD_USER_USERNAME, PASSWORD)
         product_list_page.add_backpack_to_cart()
         product_list_page.shopping_cart_badge_should_be_equal_to(1)
 
@@ -32,15 +29,13 @@ class TestAddProductToCart:
 @pytest.mark.delete_tests
 class TestDeleteProductFromCart:
     def test_backpack_should_be_deleted_from_product_list_page(self, login_page, product_list_page):
-        login_page.open_login_page()
-        login_page.login(STANDARD_USER_USERNAME, PASSWORD)
+        login_page.open_page_and_login(STANDARD_USER_USERNAME, PASSWORD)
         product_list_page.add_backpack_to_cart()
         product_list_page.delete_backpack_from_list_page()
         product_list_page.shopping_cart_badge_should_not_be_present()
 
     def test_backpack_should_be_deleted_from_cart_page(self, login_page, product_list_page, cart_page):
-        login_page.open_login_page()
-        login_page.login(STANDARD_USER_USERNAME, PASSWORD)
+        login_page.open_page_and_login(STANDARD_USER_USERNAME, PASSWORD)
         product_list_page.add_backpack_to_cart()
         product_list_page.go_to_cart()
         cart_page.remove_backpack_from_cart()
