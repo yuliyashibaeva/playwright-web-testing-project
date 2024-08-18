@@ -1,12 +1,15 @@
-from test_data.user_credentials import STANDARD_USER_USERNAME, PASSWORD
+from test_data.user_credentials import STANDARD_USER_USERNAME, PASSWORD, ERROR_USER_USERNAME
 import pytest
 
 
 @pytest.mark.happy_pass
+@pytest.mark.parametrize("user_name", [STANDARD_USER_USERNAME, ERROR_USER_USERNAME])
+# with error user the test will be failed
 class TestMakeAnOrder:
-    def test_make_an_order_happy_pass(self, login_page, product_list_page, cart_page, checkout_page, customer_data):
+    def test_make_an_order_happy_pass(self, login_page, product_list_page, cart_page, checkout_page, customer_data,
+                                      user_name):
         login_page.open_login_page()
-        login_page.login(STANDARD_USER_USERNAME, PASSWORD)
+        login_page.login(user_name, PASSWORD)
         product_list_page.add_bolt_t_shirt_to_cart()
         product_list_page.go_to_cart()
         cart_page.go_to_checkout()
