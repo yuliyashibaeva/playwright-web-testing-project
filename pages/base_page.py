@@ -9,9 +9,6 @@ class BasePage:
     def error_message_should_be_present(self):
         expect(self.page.get_by_test_id("error")).to_be_visible()
 
-    def open(self, link):  # TODO: delete if not used
-        self.page.goto(link)
-
     def shopping_cart_badge_should_be_equal_to(self, qty: int):
         expect(self.page.get_by_test_id("shopping-cart-badge")).to_have_text(str(qty))
 
