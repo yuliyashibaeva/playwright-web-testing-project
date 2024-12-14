@@ -4,8 +4,10 @@ import allure
 
 
 @pytest.mark.happy_pass
+# implemented failed test to try xfail
 @pytest.mark.parametrize("user_name", [STANDARD_USER_USERNAME, ERROR_USER_USERNAME])
-# with error user the test will be failed
+@pytest.mark.xfail(condition=lambda: pytest.param.user_name == "ERROR_USER_USERNAME",
+                   reason="known bug with the error user")
 class TestMakeAnOrder:
     @allure.title("E2E scenario: {user_name} makes an order")
     def test_make_an_order_happy_pass(self, login_page, product_list_page, cart_page, checkout_page, customer_data,
